@@ -1,5 +1,5 @@
-AWSCLI_VERSION = 1.16.96
-IMAGE_NAME ?= cmdlabs/aws-utils:$(AWSCLI_VERSION)
+VERSION = 1.0.0
+IMAGE_NAME ?= cmdlabs/aws-utils:$(VERSION)
 
 dockerBuild:
 	docker build -t $(IMAGE_NAME) .
@@ -8,11 +8,11 @@ pull:
 	docker pull $(IMAGE_NAME)
 
 shell:
-	docker run --rm -it -v $(PWD):/opt/app:Z -w /opt/app $(IMAGE_NAME) sh
+	docker run --rm -it -v $(PWD):/work:Z -w /work --entrypoint '' $(IMAGE_NAME) /bin/sh
 
 tag:
-	-git tag -d $(AWSCLI_VERSION)
-	-git push origin :refs/tags/$(AWSCLI_VERSION)
-	git tag $(AWSCLI_VERSION)
-	git push origin $(AWSCLI_VERSION)
+	# -git tag -d $(VERSION)
+	# -git push origin :refs/tags/$(VERSION)
+	git tag $(VERSION)
+	git push origin $(VERSION)
 

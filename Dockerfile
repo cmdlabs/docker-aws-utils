@@ -11,4 +11,10 @@ RUN apk --no-cache update && \
 COPY scripts /opt/scripts
 ENV PATH "$PATH:/opt/scripts"
 
-WORKDIR /opt/app
+RUN mkdir -p /work
+
+WORKDIR /work
+
+ENTRYPOINT [ "aws" ]
+
+CMD [ "--version" ]
