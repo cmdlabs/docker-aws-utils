@@ -1,5 +1,15 @@
 #!/bin/bash
 
+if [ -z $AWS_ACCOUNT_ID ]; then
+  echo "ERROR: AWS_ACCOUNT_ID environment variable is not set"
+  exit 1
+fi
+
+if [ -z $AWS_ROLE ]; then
+  echo "ERROR: AWS_ROLE environment variable is not set"
+  exit 1
+fi
+
 # Clear out existing AWS session environment, or the awscli call will fail
 unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_SECURITY_TOKEN
 # Old ec2 tools use other env vars
