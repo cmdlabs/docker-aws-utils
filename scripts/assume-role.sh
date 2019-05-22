@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 if [ -z $AWS_ACCOUNT_ID ]; then
   echo "ERROR: AWS_ACCOUNT_ID environment variable is not set"
